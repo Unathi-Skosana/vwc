@@ -4,11 +4,13 @@ set -e
 usage() {
 cat << EOF
 USAGE:
-  notes [all|category]
+  vwc [all|category]
 EXAMPLES:
-  notes all
+  vwc
     compiles all notes
-  notes category
+  vwc all
+    compiles all notes
+  vwc category
     1) /home/lynx/Dropbox/wiki/academics
     2) /home/lynx/Dropbox/wiki/coding
     3) /home/lynx/Dropbox/wiki/diary
@@ -28,7 +30,8 @@ makepdf() {
 }
 
 makehtml() {
-  pandoc -s --highlight-style pygments --katex --css $WIKI_PATH/assets/markdown.css -o \
+  pandoc -s --highlight-style pygments --katex --toc\
+  --css $WIKI_PATH/assets/markdown.css -o \
     "$2.html" $1 && echo "Created $2.html"
 }
 
@@ -48,6 +51,7 @@ makenotes() {
       ! \( -name "index.md" -or -name "*.log" -or \
       -name "*.pdf" -or -name "*.html" -or \
       -name "diary.md" \) )
+
     for notes in $files;do
       input="$1/$(basename $notes)"
       output="$1/$(basename $input .md)"
@@ -55,15 +59,9 @@ makenotes() {
       makepdf "$input" "$output"
     done
 
-    echo "Compiling combining pdfs to $1.pdf ..."
+    makehtml "$files" "$(basename $1)"
+    makepdf "$files" "$(basename $1)"
 
-    dir=$(basename $1)
-
-    gs -sDEVICE=pdfwrite \
-        -dQUIET \
-        -o "$dir.pdf" \
-        $(find *.pdf ! -name "$dir.pdf") &&
-        echo "Created $1.pdf"
     cd - &>/dev/null
   else
     for category in $categories;do
@@ -100,7 +98,7 @@ selectcategory() {
 
 main() {
   case "$1" in
-    "all")
+    "all"|"")
       echo "compiling all notes..."
       makenotes $WIKI_PATH
       ;;

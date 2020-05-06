@@ -1,12 +1,16 @@
+# vwc
+Shell script for compiling vimwiki notes to pdf/html with pandoc
+
+
 ## USAGE:
 
-    notes [all|category]
+    vwc [all|category]
 
 ## EXAMPLES:
 
-    notes all
+    vwc all
       compiles all in $WIKI_PATH
-    notes category
+    vwc category
       1) $WIKI_PATH/academics
       2) $WIKI_PATH/coding
       3) $WIKI_PATH/diary
@@ -17,9 +21,8 @@
       compiles notes in 2)
 
 ## Dependencies
-* pandoc
+* Pandoc
 * LaTeX
-* ghostscript
 
 
 ## Explanation
@@ -44,4 +47,14 @@ If the The directory structure looks like
     ├── ...
     └── index.md
 
-Images and other assets stored in the ``asssets`` dir of each corresponding folder
+Images and other assets stored in the ``assets`` of each corresponding notes directory.
+
+## Vim/Fish integration
+    command! -bang -nargs=* Notes call fzf#vim#grep("find $WIKI_PATH -iname \"*.md\" 
+          \| xargs rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, <bang>0)
+
+Also search through notes from the commandline
+
+    function notes
+      nvim -c "Notes $args"
+    end
