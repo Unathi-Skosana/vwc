@@ -1,0 +1,119 @@
+#!/bin/bash
+set -e
+
+usage() {
+cat << EOF
+USAGE:
+  notes [all|category]
+EXAMPLES:
+  notes all
+    compiles all notes
+  notes category
+    1) /home/lynx/Dropbox/wiki/academics
+    2) /home/lynx/Dropbox/wiki/coding
+    3) /home/lynx/Dropbox/wiki/diary
+    4) /home/lynx/Dropbox/wiki/cheats
+    5) /home/lynx/Dropbox/wiki/books
+    #? 2
+
+    compiles notes in 2)
+
+EOF
+}
+
+makepdf() {
+  pandoc -s --pdf-engine=pdflatex \
+    --katex -H $WIKI_PATH/assets/fonts.tex --toc \
+    -o "$2.pdf" $1 && echo "Created $2.pdf"
+}
+
+makehtml() {
+  pandoc -s --highlight-style pygments --katex --css $WIKI_PATH/assets/markdown.css -o \
+    "$2.html" $1 && echo "Created $2.html"
+}
+
+
+makenotes() {
+  ## Recursively cd into categories until there's no more directories left
+  ## then compile the notes in that directory and combines pdfs with gs
+  unset categories files output input
+
+  categories=$(find $1 -mindepth 1 \
+    -maxdepth 1 -type d ! -name "assets")
+
+  if [ -z "$categories" ]
+  then
+    cd "$1"
+    files=$(find . -mindepth 1 -maxdepth 1 -type f \
+      ! \( -name "index.md" -or -name "*.log" -or \
+      -name "*.pdf" -or -name "*.html" -or \
+      -name "diary.md" \) )
+    for notes in $files;do
+      input="$1/$(basename $notes)"
+      output="$1/$(basename $input .md)"
+      makehtml "$input" "$output"
+      makepdf "$input" "$output"
+    done
+
+    echo "Compiling combining pdfs to $1.pdf ..."
+
+    dir=$(basename $1)
+
+    gs -sDEVICE=pdfwrite \
+        -dQUIET \
+        -o "$dir.pdf" \
+        $(find *.pdf ! -name "$dir.pdf") &&
+        echo "Created $1.pdf"
+    cd - &>/dev/null
+  else
+    for category in $categories;do
+        makenotes "$category"
+    done
+  fi
+}
+
+
+# https://askubuntu.com/questions/682095/create-bash-menu-based-on-file-list-map-files-to-numbers
+selectcategory() {
+  unset options i
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+  done < <(find $WIKI_PATH -maxdepth 1 -mindepth 1 -type d ! -name "assets" -print0 )
+
+  N=${#options[@]}
+
+  select opt in "${options[@]}"; do
+    case $REPLY in
+      [1-$N])
+        cat="$opt"
+        break
+        ;;
+      *)
+        echo "Invalid input"
+        exit 0
+        ;;
+    esac
+  done
+
+  unset N options i opt
+}
+
+main() {
+  case "$1" in
+    "all")
+      echo "compiling all notes..."
+      makenotes $WIKI_PATH
+      ;;
+    "category")
+      selectcategory
+      echo "compiling category $cat..."
+      makenotes $cat
+      unset cat
+      ;;
+    *)
+      usage
+      ;;
+  esac
+}
+
+main $1
