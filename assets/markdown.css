@@ -19,35 +19,35 @@ https://github.com/AndrewBelt/WiTeX
 	font-family: 'Palatino';
     font-style: normal;
     font-weight: bold;
-	src: url('./fonts/Palatino/palatino-bold.ttf') format('truetype');
+	src: local('./fonts/Palatino/palatino-bold.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Palatino';
     font-style: normal;
     font-weight: normal;
-	src: url('./fonts/Palatino/palatino-regular.ttf') format('truetype');
+	src: local('./fonts/Palatino/palatino-regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
     font-style: normal;
     font-weight: normal;
-	src: url('./fonts/Optima/OPTIMA.TTF') format('truetype');
+	src: local('./fonts/Optima/OPTIMA.TTF') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
     font-style: normal;
     font-weight: bold;
-	src: url('./fonts/Optima/Optima Medium.ttf') format('truetype');
+	src: local('./fonts/Optima/Optima Medium.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
     font-style: italic;
     font-weight: normal;
-	src: url('./fonts/Optima/Optima_Italic.ttf') format('truetype');
+	src: local('./fonts/Optima/Optima_Italic.ttf') format('truetype');
 }
 
 
