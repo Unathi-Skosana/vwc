@@ -60,3 +60,7 @@ Also search through notes from the command line
     function notes
       nvim -c "Notes $args"
     end
+
+## Sample
+
+![sample](./05_11_2020_18_55_28.png)
