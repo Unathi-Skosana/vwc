@@ -4,12 +4,14 @@ Shell script for compiling vimwiki notes to pdf/html with pandoc
 
 ## USAGE:
 
-    vwc [all|category]
+    vwc [all|category|"*.md"]
 
 ## EXAMPLES:
 
     vwc all
       compiles all in $WIKI_PATH
+    vwc some-arcane-topic.md
+      compiles some-arcane-topic.md
     vwc category
       1) $WIKI_PATH/academics
       2) $WIKI_PATH/coding
