@@ -6,10 +6,8 @@ cat << EOF
 USAGE:
   vwc [all|category]
 EXAMPLES:
-  vwc
-    compiles all notes
-  vwc all
-    compiles all notes
+  vwc ./some-arcane-topic.md
+    compiles some-arcane-topic
   vwc category
     1) /home/lynx/Dropbox/wiki/academics
     2) /home/lynx/Dropbox/wiki/coding
@@ -19,6 +17,8 @@ EXAMPLES:
     #? 2
 
     compiles notes in 2)
+  vwc all
+    compiles all notes
 
 EOF
 }
@@ -30,9 +30,14 @@ makepdf() {
 }
 
 makehtml() {
-  pandoc -s --highlight-style pygments --katex --toc\
-  --css $WIKI_PATH/assets/markdown.css -o \
-    "$2.html" $1 && echo "Created $2.html"
+  esh -s /bin/bash \
+    -o "$2.html" \
+    "$WIKI_PATH/assets/note.esh" \
+    title="$title" \
+    file="$1" \
+    syntax="$WIKI_PATH/assets/syntax.css" \
+    style="$WIKI_PATH/assets/markdown.css" \
+    && echo "Created $2.html"
 }
 
 
@@ -58,10 +63,6 @@ makenotes() {
       makehtml "$input" "$output"
       makepdf "$input" "$output"
     done
-
-    makehtml "$files" "$(basename $1)"
-    makepdf "$files" "$(basename $1)"
-
     cd - &>/dev/null
   else
     for category in $categories;do
@@ -98,7 +99,7 @@ selectcategory() {
 
 main() {
   case "$1" in
-    "all"|"")
+    "all")
       echo "compiling all notes..."
       makenotes $WIKI_PATH
       ;;
@@ -107,6 +108,12 @@ main() {
       echo "compiling category $cat..."
       makenotes $cat
       unset cat
+      ;;
+    *.md)
+      fn="$(basename $1 .md)"
+      echo "compiling a single file $1"
+      makehtml "$1" "$fn"
+      makepdf "$1" "$fn"
       ;;
     *)
       usage

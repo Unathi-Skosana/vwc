@@ -1,2 +1,2 @@
 # TODOLIST
-[ ] citation
+- [ ] citation

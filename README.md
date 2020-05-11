@@ -23,6 +23,7 @@ Shell script for compiling vimwiki notes to pdf/html with pandoc
 ## Dependencies
 * Pandoc
 * LaTeX
+* esh
 
 
 ## Explanation
@@ -53,7 +54,7 @@ Images and other assets stored in the ``assets`` of each corresponding notes dir
     command! -bang -nargs=* Notes call fzf#vim#grep("find $WIKI_PATH -iname \"*.md\" 
           \| xargs rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, <bang>0)
 
-Also search through notes from the commandline
+Also search through notes from the command line
 
     function notes
       nvim -c "Notes $args"
