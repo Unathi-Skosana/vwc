@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 usage() {
 cat << EOF
 USAGE:
-  vwc [all|category]
+  vwc [all|category|"*.md"]
 EXAMPLES:
   vwc ./some-arcane-topic.md
     compiles some-arcane-topic
