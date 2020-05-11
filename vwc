@@ -30,14 +30,10 @@ makepdf() {
 }
 
 makehtml() {
-  esh -s /bin/bash \
-    -o "$2.html" \
-    "$WIKI_PATH/assets/note.esh" \
-    title="$title" \
-    file="$1" \
-    syntax="$WIKI_PATH/assets/syntax.css" \
-    style="$WIKI_PATH/assets/markdown.css" \
-    && echo "Created $2.html"
+  pandoc --template="$WIKI_PATH/assets/notes.html" \
+  --highlight-style monochrome --katex \
+  -c $WIKI_PATH/assets/markdown.css \
+  --toc -o "$2.html" $1 && echo "Created $2.html"
 }
 
 
@@ -63,6 +59,10 @@ makenotes() {
       makehtml "$input" "$output"
       makepdf "$input" "$output"
     done
+
+    makehtml "$files" "$(basename $1)"
+    makepdf "$files" "$(basename $1)"
+
     cd - &>/dev/null
   else
     for category in $categories;do

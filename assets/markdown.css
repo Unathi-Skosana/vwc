@@ -1,5 +1,18 @@
-@import url('https://cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-Iosevka.css');
+/*********************************************************************
+This is free and unencumbered software released into the public domain.
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+For more information, please refer to <http://unlicense.org/>
+*********************************************************************/
 
+/*
+WiTeX
+https://github.com/AndrewBelt/WiTeX
+*/
+
+@import url('https://cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-Iosevka.css');
 
 @font-face {
 	font-family: 'Palatino';
@@ -227,32 +240,24 @@ sup {
   font-size: .9em !important;
 }
 
-.markdown-body  {
-  img,figure {
-    border-style: none;
-  }
+.markdown-body img,.markdown-body figure {
+  border-style: none;
 }
 
-.markdown-body {
-  img,figure {
-    max-width: 100%;
-    box-sizing: initial;
-    background-color: #fff;
-  }
+.markdown-body img, .markdown-body figure {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
 }
 
-.markdown-body {
-  img[align=right],figure[align=right] {
-    padding-left: 20px;
-  }
+.markdown-body img[align=right], .markdown-body figure[align=right] {
+  padding-left: 20px;
 }
 
-.markdown-body {
-  img[align=left], figure[align=left] {
-    padding-right: 20px;
-  }
+.markdown-body img[align=left], .markdown-body figure[align=left] {
+  padding-right: 20px;
 }
 
-strong,em {
-color: #c7254e;
+strong, em {
+  color: #c7254e;
 }

@@ -23,7 +23,6 @@ Shell script for compiling vimwiki notes to pdf/html with pandoc
 ## Dependencies
 * Pandoc
 * LaTeX
-* esh
 
 
 ## Explanation
