@@ -1,5 +1,7 @@
 ---
-pdfengine: pdflatex
+mainfont: Palatino Linotype
+sansfont: Optima
+monofont: Iosevka
 tocdepth: 3
 numbersections: true
 linktoc: all

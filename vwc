@@ -25,15 +25,16 @@ EOF
 
 makepdf() {
   pandoc "$WIKI_PATH/static/meta.yml" \
+    --pdf-engine=xelatex --katex --toc \
     --template="$WIKI_PATH/static/notes.tex" \
-    --katex --toc -H $WIKI_PATH/static/fonts.tex \
     -o "$2.pdf" $1 && echo "Created $2.pdf" 
 }
 
 makehtml() {
   pandoc "$WIKI_PATH/static/meta.yml" \
   --template="$WIKI_PATH/static/notes.html" \
-  --toc --katex -c $WIKI_PATH/static/markdown.css \
+  --toc --katex \
+  -c "https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/markdown.css" \
   -o "$2.html" $1 && echo "Created $2.html"
 }
 

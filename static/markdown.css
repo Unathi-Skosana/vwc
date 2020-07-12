@@ -7,46 +7,69 @@ means.
 For more information, please refer to <http://unlicense.org/>
 *********************************************************************/
 
-/*
-WiTeX
-https://github.com/AndrewBelt/WiTeX
-*/
+@font-face {
+	font-family: 'Iosevka';
+  font-style: normal;
+  font-weight: normal;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-regular.ttf') format('truetype');
+}
 
-@import url('https://cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-Iosevka.css');
+@font-face {
+	font-family: 'Iosevka';
+  font-style: italic;
+  font-weight: normal;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-italic.ttf') format('truetype');
+}
+
+
+@font-face {
+	font-family: 'Iosevka';
+  font-style: normal;
+  font-weight: bold;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Iosevka';
+  font-style: italic;
+  font-weight: bold;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-bolditalic.ttf') format('truetype');
+}
+
 
 @font-face {
 	font-family: 'Palatino';
-    font-style: normal;
-    font-weight: bold;
-	src: local('./fonts/Palatino/palatino-bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Palatino/palatino-bold.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Palatino';
-    font-style: normal;
-    font-weight: normal;
-	src: local('./fonts/Palatino/palatino-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Palatino/palatino-regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
-    font-style: normal;
-    font-weight: normal;
-	src: local('./fonts/Optima/OPTIMA.TTF') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Optima/optima-regular.TTF') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
-    font-style: normal;
-    font-weight: bold;
-	src: local('./fonts/Optima/Optima Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Optima/optima-medium.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Optima';
-    font-style: italic;
-    font-weight: normal;
-	src: local('./fonts/Optima/Optima_Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+  src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Optima/optima-italic.ttf') format('truetype');
 }
 
 
@@ -62,7 +85,7 @@ body {
 }
 
 pre, code, kbd {
-  font-family: 'TypoPRO Iosevka Term', monospace;
+  font-family: 'Iosevka', monospace;
 }
 
 pre:not(.sourceCode),div.sourceCode {
