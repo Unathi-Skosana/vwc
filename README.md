@@ -66,4 +66,4 @@ Also fuzzy search through notes from the command line
 
 ## Sample
 
-![sample](./05_11_2020_18_55_28.png)
+![sample](./07_12_2020_02_58_24.png)
