@@ -56,18 +56,31 @@ body {
 	background: none;
 	font-size: 14pt;
 	font-family: Palatino, sans-serif;
+  background-color: hsl(210, 20%, 98%);
+	text-rendering: optimizeLegibility;
+
 }
 
-pre, code {
+pre, code, kbd {
   font-family: 'TypoPRO Iosevka Term', monospace;
+}
+
+pre:not(.sourceCode),div.sourceCode {
+  overflow: auto !important;
+  padding: 1.5rem;
+  border: 2px solid  #eee;
+  border-radius: 0.5rem;
 }
 
 #page-ctn {
   margin: 0 auto;
   max-width: 900px;
-  color: #24292e;
+  color: hsl(0, 5%, 10%);
 }
 
+nav ul {
+  list-style-type: none;
+}
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -80,12 +93,14 @@ a, a:visited {
 }
 
 a.new, a.new:visited {
-	color: black;
+  color: hsl(0, 5%, 10%);
 }
 
-ul {
-	list-style: disc;
+
+.toc-section-number {
+  margin-right: 0.5rem;
 }
+
 
 #markdown-navigation, #markdown-page-base, #markdown-head-base, #footer {
 	/* nuke everything but the content */
@@ -101,7 +116,7 @@ ul {
 
 #content, div#content {
 	border: none;
-	color: black;
+  color: hsl(0, 5%, 10%);
 }
 
 #firstHeading, #siteSub {
@@ -225,7 +240,8 @@ div.tleft {
 }
 
 pre, code {
-	font-family: "Latin Modern Mono", monospace !important;
+  font-family: 'TypoPRO Iosevka Term', monospace;
+  font-size: 85%;
 }
 
 sup {
@@ -259,5 +275,5 @@ sup {
 }
 
 strong, em {
-  color: #c7254e;
+  color: #a00;
 }
