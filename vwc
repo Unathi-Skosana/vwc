@@ -23,16 +23,18 @@ EXAMPLES:
 EOF
 }
 
+STATIC="$HOME/Repositories/vwc/static"
+
 makepdf() {
-  pandoc "$WIKI_PATH/static/meta.yml" \
+  pandoc "$STATIC/meta.yml" \
     --pdf-engine=xelatex --katex --toc \
-    --template="$WIKI_PATH/static/notes.tex" \
+    --template="$STATIC/notes.tex" \
     -o "$2.pdf" $1 && echo "Created $2.pdf" 
 }
 
 makehtml() {
-  pandoc "$WIKI_PATH/static/meta.yml" \
-  --template="$WIKI_PATH/static/notes.html" \
+  pandoc "$STATIC/meta.yml" \
+  --template="$STATIC/notes.html" \
   --toc --katex \
   -c "https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/markdown.css" \
   -o "$2.html" $1 && echo "Created $2.html"
