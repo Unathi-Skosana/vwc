@@ -27,18 +27,17 @@ makepdf() {
   pandoc -s --pdf-engine=pdflatex \
     --template="$WIKI_PATH/assets/notes.tex" \
     --variable colorlinks=true \
-    --variable citecolor='[HTML]{c7254e}' \
-    --variable filecolor='[HTML]{c7254e}' \
-    --variable linkcolor='[HTML]{c7254e}' \
-    --variable urlcolor='[HTML]{c7254e}' \
-    --variable toccolor='[HTML]{c7254e}' \
     --variable pdfborderstylee='{/S/U/W 1}' \
-    --variable urlbordercolor='cyan' \
+    --variable citecolor='[HTML]{a00}' \
+    --variable filecolor='[HTML]{a00}' \
+    --variable linkcolor='[HTML]{a00}' \
+    --variable urlcolor='[HTML]{a00}' \
+    --variable toccolor='[HTML]{a00}' \
+    --variable urlbordercolor='[HTML]{a00}' \
     --variable links-as-notes=true \
-    --variable linktoc=all \
     --katex -H $WIKI_PATH/assets/fonts.tex \
     --toc --toc-depth=3 --number-sections  --number-offset=0 \
-    -o "$2.pdf" $1 && echo "Created $2.pdf" 
+    -o "$2.pdf" $1 && echo "Created $2.pdf"
 }
 
 makehtml() {
