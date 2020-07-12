@@ -1,0 +1,15 @@
+---
+pdfengine: pdflatex
+tocdepth: 3
+numbersections: true
+linktoc: all
+links-as-notes: true
+citecolor: TeXRed
+filecolor: TeXRed
+linkcolor: TeXRed
+urlcolor: TeXRed
+toccolor: TeXRed
+allbordercolors: TeXRed
+urlbordercolor: TeXRed
+highlight-style: monochrome
+---

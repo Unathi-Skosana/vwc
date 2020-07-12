@@ -24,28 +24,16 @@ EOF
 }
 
 makepdf() {
-  pandoc -s --pdf-engine=pdflatex \
-    --template="$WIKI_PATH/assets/notes.tex" \
-    --variable colorlinks=true \
-    --variable citecolor='[HTML]{a00a00}' \
-    --variable filecolor='[HTML]{a00a00}' \
-    --variable linkcolor='[HTML]{a00a00}' \
-    --variable urlcolor='[HTML]{a00a00}' \
-    --variable toccolor='[HTML]{a00a00}' \
-    --variable pdfborderstylee='{/S/U/W 1}' \
-    --variable urlbordercolor='[HTML]{a00a00}' \
-    --variable links-as-notes=true \
-    --variable linktoc=all \
-    --katex -H $WIKI_PATH/assets/fonts.tex \
-    --toc --toc-depth=3 --number-sections  --number-offset=0 \
+  pandoc "$WIKI_PATH/static/meta.yml" \
+    --template="$WIKI_PATH/static/notes.tex" \
+    --katex --toc -H $WIKI_PATH/static/fonts.tex \
     -o "$2.pdf" $1 && echo "Created $2.pdf" 
 }
 
 makehtml() {
-  pandoc --template="$WIKI_PATH/assets/notes.html" \
-  --toc --toc-depth=3 --number-sections --number-offset=0 \
-  --highlight-style monochrome --katex \
-  -c $WIKI_PATH/assets/markdown.css \
+  pandoc "$WIKI_PATH/static/meta.yml" \
+  --template="$WIKI_PATH/static/notes.html" \
+  --toc --katex -c $WIKI_PATH/static/markdown.css \
   -o "$2.html" $1 && echo "Created $2.html"
 }
 
@@ -56,7 +44,7 @@ makenotes() {
   unset categories files output input
 
   categories=$(find $1 -mindepth 1 \
-    -maxdepth 1 -type d ! -name "assets")
+    -maxdepth 1 -type d ! -name "static")
 
   if [ -z "$categories" ]
   then
@@ -90,7 +78,7 @@ selectcategory() {
   unset options i
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
-  done < <(find $WIKI_PATH -maxdepth 1 -mindepth 1 -type d ! -name "assets" -print0 )
+  done < <(find $WIKI_PATH -maxdepth 1 -mindepth 1 -type d ! -name "static" -print0 )
 
   N=${#options[@]}
 
