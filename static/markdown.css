@@ -78,14 +78,14 @@ For more information, please refer to <http://unlicense.org/>
 body {
 	background: none;
 	font-size: 14pt;
-	font-family: Palatino, sans-serif;
+	font-family: Palatino;
   background-color: hsl(210, 20%, 98%);
 	text-rendering: optimizeLegibility;
 
 }
 
 pre, code, kbd {
-  font-family: 'Iosevka', monospace;
+  font-family: Iosevka;
 }
 
 pre:not(.sourceCode),div.sourceCode {
