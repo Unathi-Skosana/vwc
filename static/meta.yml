@@ -5,7 +5,6 @@ monofont: Iosevka
 tocdepth: 3
 numbersections: true
 linktoc: all
-links-as-notes: true
 citecolor: TeXRed
 filecolor: TeXRed
 linkcolor: TeXRed
