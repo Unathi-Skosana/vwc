@@ -55,7 +55,7 @@ For more information, please refer to <http://unlicense.org/>
 	font-family: 'Optima';
   font-style: normal;
   font-weight: normal;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Optima/optima-regular.TTF') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Optima/optima-regular.ttf') format('truetype');
 }
 
 @font-face {
