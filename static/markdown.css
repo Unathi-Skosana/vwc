@@ -11,14 +11,14 @@ For more information, please refer to <http://unlicense.org/>
 	font-family: 'Iosevka';
   font-style: normal;
   font-weight: normal;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-regular.ttf') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Iosevka/iosevka-regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Iosevka';
   font-style: italic;
   font-weight: normal;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-italic.ttf') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Iosevka/iosevka-italic.ttf') format('truetype');
 }
 
 
@@ -26,14 +26,14 @@ For more information, please refer to <http://unlicense.org/>
 	font-family: 'Iosevka';
   font-style: normal;
   font-weight: bold;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-bold.ttf') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Iosevka/iosevka-bold.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Iosevka';
   font-style: italic;
   font-weight: bold;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Iosevka/iosevka-bolditalic.ttf') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Iosevka/iosevka-bolditalic.ttf') format('truetype');
 }
 
 
@@ -41,7 +41,7 @@ For more information, please refer to <http://unlicense.org/>
 	font-family: 'Palatino';
   font-style: normal;
   font-weight: bold;
-	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/fonts/Palatino/palatino-bold.ttf') format('truetype');
+	src: url('https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/fonts/Palatino/palatino-bold.ttf') format('truetype');
 }
 
 @font-face {
