@@ -115,9 +115,11 @@ main() {
       ;;
     *.md)
       fn="$(basename $1 .md)"
+      dir="$(dirname $1)"
       echo "compiling a single file $1"
-      makehtml "$1" "$fn"
-      makepdf "$1" "$fn"
+      makehtml "$1" "$dir/$fn"
+      makepdf "$1" "$dir/$fn"
+      unset fn dir
       ;;
     *)
       usage
