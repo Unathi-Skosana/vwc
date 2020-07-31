@@ -7,6 +7,10 @@ means.
 For more information, please refer to <http://unlicense.org/>
 *********************************************************************/
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
 	font-family: 'Iosevka';
   font-style: normal;
