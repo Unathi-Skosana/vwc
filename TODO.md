@@ -1,2 +1,4 @@
 # TODOLIST
-- [ ] citation
+- [x] citation
+- [ ] comments
+- [ ] switching templates

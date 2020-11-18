@@ -23,21 +23,59 @@ EXAMPLES:
 EOF
 }
 
-STATIC="$HOME/Repositories/vwc/static"
+STATIC="$HOME/repositories/vwc/static"
+BIN="$HOME/repositories/vwc/bin"
 
 makepdf() {
-  pandoc "$STATIC/meta.yml" \
-    --pdf-engine=xelatex --katex --toc \
-    --template="$STATIC/notes.tex" \
-    -o "$2.pdf" $1 && echo "Created $2.pdf" 
+  bib="$2.bib"
+
+  if [ -f "$bib" ]; then
+    echo "Found $bib"
+    pandoc "$STATIC/meta.yml" \
+      --from markdown+implicit_figures \
+      --include-in-header "$STATIC/header.tex" \
+      --template "$STATIC/notes.tex" \
+      --filter "$BIN/pandocCommentFilter.py" \
+      --toc \
+      --bibliography "$bib" \
+      --filter pandoc-citeproc --csl "$STATIC/ieee-with-url.csl" \
+      -o "$2.pdf" $1 && echo "Created $2.pdf"
+  else
+    pandoc "$STATIC/meta.yml" \
+      --from markdown+implicit_figures \
+      --include-in-header "$STATIC/header.tex" \
+      --template="$STATIC/notes.tex" \
+      --filter "$BIN/pandocCommentFilter.py" \
+      --toc \
+      -o "$2.pdf" $1 && echo "Created $2.pdf"
+  fi
 }
 
 makehtml() {
-  pandoc "$STATIC/meta.yml" \
-  --template="$STATIC/notes.html" \
-  --toc --katex \
-  -c "https://cdn.jsdelivr.net/gh/Unathi-Skosana/vwc@master/static/markdown.css" \
-  -o "$2.html" $1 && echo "Created $2.html"
+  bib="$2.bib"
+
+  if [ -f "$bib" ]; then
+    echo "Found $bib"
+    pandoc "$STATIC/meta.yml" \
+    --template="$STATIC/notes.html" \
+    --filter "$BIN/pandocCommentFilter.py" \
+    --toc \
+    --katex \
+    --bibliography "$bib" \
+    --filter pandoc-citeproc --csl "$STATIC/ieee-with-url.csl" \
+    -c "$STATIC/tufte.css" \
+    -o "$2.html" $1 && echo "Created $2.html"
+  else
+    pandoc "$STATIC/meta.yml" \
+    --template="$STATIC/notes.html" \
+    --filter "$BIN/pandocCommentFilter.py" \
+    --toc \
+    --katex \
+    -c "$STATIC/tufte.css"  \
+    -o "$2.html" $1 && echo "Created $2.html"
+  fi
+
+
 }
 
 
@@ -55,7 +93,7 @@ makenotes() {
     files=$(find . -mindepth 1 -maxdepth 1 -type f \
       ! \( -name "index.md" -or -name "*.log" -or \
       -name "*.pdf" -or -name "*.html" -or \
-      -name "diary.md" \) )
+      -name "diary.md" or -name "*.bib" \) )
 
     for notes in $files;do
       input="$1/$(basename $notes)"
