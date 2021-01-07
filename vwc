@@ -85,7 +85,7 @@ makenotes() {
   unset categories files output input
 
   categories=$(find $1 -mindepth 1 \
-    -maxdepth 1 -type d ! -name "static")
+      -maxdepth 1 -type d ! \( -name "static" -or -name "reports" \) )
 
   if [ -z "$categories" ]
   then
@@ -93,7 +93,8 @@ makenotes() {
     files=$(find . -mindepth 1 -maxdepth 1 -type f \
       ! \( -name "index.md" -or -name "*.log" -or \
       -name "*.pdf" -or -name "*.html" -or \
-      -name "diary.md" or -name "*.bib" \) )
+      -name "diary.md" -or -name "*.bib" -or \
+      -name "*.py" -or -name "*.yml" \) )
 
     for notes in $files;do
       input="$1/$(basename $notes)"
